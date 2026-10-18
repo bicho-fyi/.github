@@ -1,47 +1,41 @@
-<div align="center">
+# Bicho.FYI
 
-# 🪲 Bicho.FYI
+Self-hosted error tracking for AI agents. Deploy Bicho to your own Cloudflare account, capture production errors, and investigate through MCP or the HTTP API. D1 and a private R2 bucket keep the evidence in your account. There is no built-in dashboard.
 
-### the bug, FYI.
+Bicho means "bug" in Spanish. Bicho.FYI: the bug, for your information.
 
-Self-hosted error tracking on Cloudflare Workers.<br>
-Capture errors with OpenTelemetry. Investigate them through MCP.<br>
-Keep the data in your own Cloudflare account.
+[Website](https://bicho.fyi/) · [Documentation](https://bicho.fyi/docs/) · [Server source](https://github.com/bicho-fyi/bicho)
 
-[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)](https://github.com/bicho-fyi/bicho)
-[![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-OTLP-425CC7?logo=opentelemetry&logoColor=white)](https://opentelemetry.io/docs/specs/otlp/)
-[![MCP](https://img.shields.io/badge/MCP-investigation-24292F)](https://github.com/bicho-fyi/bicho#mcp)
-[![License](https://img.shields.io/badge/license-Apache--2.0-green)](https://github.com/bicho-fyi/bicho/blob/main/LICENSE)
+## SDKs
 
-[Website](https://bicho.fyi) · [Server documentation](https://github.com/bicho-fyi/bicho#readme) · [JavaScript SDK](https://github.com/bicho-fyi/bicho-javascript#readme)
+| SDK | Package | Capture and delivery |
+| --- | --- | --- |
+| [JavaScript / TypeScript](https://github.com/bicho-fyi/bicho-javascript) | [`@bicho-fyi/javascript`](https://www.npmjs.com/package/@bicho-fyi/javascript) | Automatic browser capture and explicit Node.js reporting. Queued delivery with flush/close. |
+| [PHP](https://github.com/bicho-fyi/bicho-php) | [`bicho-fyi/php`](https://packagist.org/packages/bicho-fyi/php) | Explicit exception and message capture. Synchronous delivery. |
+| [Rust](https://github.com/bicho-fyi/bicho-rust) | [`bicho`](https://crates.io/crates/bicho) | Explicit error and message capture. Awaited delivery on Tokio, including Tauri applications. |
 
-</div>
+All Bicho SDKs send OTLP/HTTP JSON. Other languages and existing instrumentation can use an OpenTelemetry logs exporter with HTTP JSON or binary protobuf. You do not need a separate OpenTelemetry Collector.
 
----
+[SDK guides](https://bicho.fyi/docs/sdks/)
 
-## Errors in. Answers within reach.
+## Already using Sentry?
 
-Bicho groups exception and error logs into issues, stores the captured evidence in D1 and R2, and gives your tools an API to inspect it. You can use it without a dashboard or an OpenTelemetry Collector.
+Keep your SDK and error-capture code. Create a Bicho project and replace your DSN with its generated `sentry.dsn`. Secret-enabled backend projects also need the generated transport headers.
 
-Connect an MCP client to search issues, inspect stack traces, compare releases and read event statistics. Agents can register projects and update issue status; captured events stay intact.
+Bicho accepts error and message events, not tracing, replay, or profiling. Disable unsupported integrations. Switching the DSN redirects new errors; it does not import Sentry history or reproduce Sentry's grouping rules.
 
-## Pick your starting point
+[Move from Sentry](https://bicho.fyi/docs/sentry/)
 
-| Project | What it does |
-| :--- | :--- |
-| [**bicho**](https://github.com/bicho-fyi/bicho) | The server: OTLP ingestion, issue grouping, D1/R2 storage, HTTP API and MCP tools. Deploy it to your Cloudflare account. |
-| [**bicho-javascript**](https://github.com/bicho-fyi/bicho-javascript) | JavaScript and TypeScript SDK: automatic browser error capture and explicit Node.js reporting. Available as [`@bicho-fyi/javascript`](https://www.npmjs.com/package/@bicho-fyi/javascript). |
+## Deploy and investigate
 
-For other languages, send logs through an OpenTelemetry exporter using OTLP/HTTP JSON or binary protobuf.
+[Deploy Bicho to Cloudflare](https://deploy.workers.cloudflare.com/?url=https://github.com/bicho-fyi/bicho), connect your MCP client, and call `create_project`. It returns the project ID, OTLP endpoint and ingest headers, and a Sentry DSN.
 
-## Run your own instance
+Bicho groups repeated errors into issues and preserves their individual events. Your agent can search issues, inspect stacks and context, compare releases, and read statistics. It can also create projects and update issue status. Approve those changes deliberately; captured error text is evidence, not instructions.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/bicho-fyi/bicho)
+[Setup guide](https://bicho.fyi/docs/) · [MCP guide](https://bicho.fyi/docs/mcp/) · [HTTP API](https://bicho.fyi/docs/api/)
 
-Deploy the server, connect your MCP client, and call `create_project`. Bicho returns a project ID and the OTLP endpoint and headers for your application. [Follow the setup instructions](https://github.com/bicho-fyi/bicho#deploy-to-cloudflare).
+## Contribute
 
-## Built in the open
+Bug reports and focused contributions are welcome in the relevant server or SDK repository.
 
-Bug reports and focused contributions are welcome. [Open a server issue](https://github.com/bicho-fyi/bicho/issues) or [report an SDK issue](https://github.com/bicho-fyi/bicho-javascript/issues).
-
-<sub>Made by [Alex Zappa](https://alex.zappa.dev/) at [FreshJuice](https://freshjuice.dev/). Apache-2.0.</sub>
+Bicho core and SDKs are licensed under Apache-2.0. Made by [Alex Zappa](https://alex.zappa.dev/) ([FreshJuice](https://freshjuice.dev/)). Bicho is not affiliated with, sponsored by, or endorsed by Cloudflare or Sentry.
