@@ -13,10 +13,11 @@ Bicho means "bug" in Spanish. Bicho.FYI: the bug, for your information.
 | [JavaScript / TypeScript](https://github.com/bicho-fyi/bicho-javascript) | [`@bicho-fyi/javascript`](https://www.npmjs.com/package/@bicho-fyi/javascript) | Automatic browser capture and explicit Node.js reporting. Queued delivery with flush/close. |
 | [PHP](https://github.com/bicho-fyi/bicho-php) | [`bicho-fyi/php`](https://packagist.org/packages/bicho-fyi/php) | Explicit exception and message capture. Synchronous delivery. |
 | [Rust](https://github.com/bicho-fyi/bicho-rust) | [`bicho`](https://crates.io/crates/bicho) | Explicit error and message capture. Awaited delivery on Tokio, including Tauri applications. |
+| [Python](https://github.com/bicho-fyi/bicho-python) | [`bicho-fyi`](https://bicho.fyi/docs/python/#install-from-git) | Explicit exception and message capture. Synchronous delivery. Python 3.11+, no runtime dependencies. |
 
 All Bicho SDKs send OTLP/HTTP JSON. Other languages and existing instrumentation can use an OpenTelemetry logs exporter with HTTP JSON or binary protobuf. You do not need a separate OpenTelemetry Collector.
 
-[SDK guides](https://bicho.fyi/docs/sdks/)
+[SDK guides](https://bicho.fyi/docs/sdks/) · [Runnable SDK examples](https://github.com/bicho-fyi/bicho-examples)
 
 ## Already using Sentry?
 
