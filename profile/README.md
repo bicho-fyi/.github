@@ -36,6 +36,8 @@ Bicho groups repeated errors into issues and preserves their individual events. 
 
 ## Contribute
 
-Bug reports and focused contributions are welcome in the relevant server or SDK repository.
+Questions, ideas, or something you've built with Bicho? [Join the community discussions](https://github.com/orgs/bicho-fyi/discussions).
+
+Bug reports and focused contributions are welcome in the relevant server or SDK repository. Use that repository's Issues for bugs.
 
 Bicho core and SDKs are licensed under Apache-2.0. Made by [Alex Zappa](https://alex.zappa.dev/) ([FreshJuice](https://freshjuice.dev/)). Bicho is not affiliated with, sponsored by, or endorsed by Cloudflare or Sentry.
