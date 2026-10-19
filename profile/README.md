@@ -6,14 +6,15 @@ Bicho means "bug" in Spanish. Bicho.FYI: the bug, for your information.
 
 [Website](https://bicho.fyi/) · [Documentation](https://bicho.fyi/docs/) · [Server source](https://github.com/bicho-fyi/bicho)
 
-## SDKs
+## SDKs and integrations
 
-| SDK | Package | Capture and delivery |
+| SDK or integration | Package | Capture and delivery |
 | --- | --- | --- |
 | [JavaScript / TypeScript](https://github.com/bicho-fyi/bicho-javascript) | [`@bicho-fyi/javascript`](https://www.npmjs.com/package/@bicho-fyi/javascript) | Automatic browser capture and explicit Node.js reporting. Queued delivery with flush/close. |
 | [PHP](https://github.com/bicho-fyi/bicho-php) | [`bicho-fyi/php`](https://packagist.org/packages/bicho-fyi/php) | Explicit exception and message capture. Synchronous delivery. |
 | [Rust](https://github.com/bicho-fyi/bicho-rust) | [`bicho`](https://crates.io/crates/bicho) | Explicit error and message capture. Awaited delivery on Tokio, including Tauri applications. |
 | [Python](https://github.com/bicho-fyi/bicho-python) | [`bicho-fyi`](https://bicho.fyi/docs/python/#install-from-git) | Explicit exception and message capture. Synchronous delivery. Python 3.11+, no runtime dependencies. |
+| [Astro](https://github.com/bicho-fyi/bicho-astro) | [`@bicho-fyi/astro`](https://www.npmjs.com/package/@bicho-fyi/astro) | Opt-in browser error capture and server request-exception reporting. Separate browser/server configuration and bounded server delivery. |
 
 All Bicho SDKs send OTLP/HTTP JSON. Other languages and existing instrumentation can use an OpenTelemetry logs exporter with HTTP JSON or binary protobuf. You do not need a separate OpenTelemetry Collector.
 
