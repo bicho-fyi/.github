@@ -15,6 +15,7 @@ Bicho means "bug" in Spanish. Bicho.FYI: the bug, for your information.
 | [Rust](https://github.com/bicho-fyi/bicho-rust) | [`bicho`](https://crates.io/crates/bicho) | Explicit error and message capture. Awaited delivery on Tokio, including Tauri applications. |
 | [Python](https://github.com/bicho-fyi/bicho-python) | [`bicho-fyi`](https://bicho.fyi/docs/python/#install-from-git) | Explicit exception and message capture. Synchronous delivery. Python 3.11+, no runtime dependencies. |
 | [Astro](https://github.com/bicho-fyi/bicho-astro) | [`@bicho-fyi/astro`](https://www.npmjs.com/package/@bicho-fyi/astro) | Opt-in browser error capture and server request-exception reporting. Separate browser/server configuration and bounded server delivery. |
+| [WordPress](https://github.com/bicho-fyi/bicho-wordpress) | [`bicho-error-tracking.zip`](https://github.com/bicho-fyi/bicho-wordpress/releases/tag/v1.0.0) | Opt-in PHP warning/fatal reporting and frontend browser capture. Dashboard, environment, and `wp-config.php` settings. |
 
 All Bicho SDKs send OTLP/HTTP JSON. Other languages and existing instrumentation can use an OpenTelemetry logs exporter with HTTP JSON or binary protobuf. You do not need a separate OpenTelemetry Collector.
 
